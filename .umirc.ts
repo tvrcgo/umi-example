@@ -1,6 +1,9 @@
 import { IConfig } from 'umi-types';
 const config: IConfig = {
   treeShaking: true,
+  theme: {
+    'primary-color': '#464086'
+  },
   routes: [
     {
       path: '/',

@@ -28,7 +28,7 @@ const BasicLayout: React.FC = props => {
               borderRight: 'none'
             }}
           >
-            <Menu.Item key='home'>Home</Menu.Item>
+            <Menu.Item key='home'><Link to='/'>HOME</Link></Menu.Item>
             <Menu.SubMenu
               title={<span>内容</span>}
             >
@@ -53,6 +53,7 @@ const BasicLayout: React.FC = props => {
                 <Menu.Item key='g4-2'>MENU 2</Menu.Item>
               </Menu.ItemGroup>
             </Menu.SubMenu>
+            <Menu.Item><Link to='/about'>About</Link></Menu.Item>
           </Menu>
         </div>
         <div className={styles.content}>

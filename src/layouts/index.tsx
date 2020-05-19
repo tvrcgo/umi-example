@@ -14,7 +14,6 @@ const BasicLayout: React.FC = props => {
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>
-            <span>region</span>
             <span>lang</span>
             <span>username</span>
           </div>

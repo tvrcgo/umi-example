@@ -1,4 +1,5 @@
-import { IConfig } from 'umi-types';
+import { IConfig } from 'umi-types'
+
 const config: IConfig = {
   treeShaking: true,
   theme: {
@@ -37,5 +38,6 @@ const config: IConfig = {
       },
     ],
   ],
-};
-export default config;
+}
+
+export default config

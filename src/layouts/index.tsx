@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
 import styles from './index.less'
 import Link from 'umi/link'
-import { Menu } from 'antd'
-import { CaretDownOutlined } from '@ant-design/icons'
+import { Menu, Avatar } from 'antd'
+import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 
 interface NavProps {
   title: React.ReactElement | string
   children?: React.ReactElement | React.ReactText
   width?: number
+  arrow?: boolean,
+  align?: string,
 }
 
 const Nav: React.FC<NavProps> = props => {
   const [visible, toggle] = useState(false)
   return (
     <div className={styles.nav + (visible ? ` ${styles.active}` : '')} onMouseOver={_ => toggle(true)} onMouseOut={_ => toggle(false)}>
-      <h2 className={styles['nav-title']}>{props.title} {props.children && <CaretDownOutlined style={{ fontSize: '0.6em' }} /> || null}</h2>
+      <h2 className={styles['nav-title']}>{props.title} {props.arrow && <CaretDownOutlined style={{ fontSize: '0.6em' }} /> || null}</h2>
       <div className={styles['nav-content']} style={{
         display: visible && props.children ? 'block' : 'none',
-        width: props.width || 200
+        width: props.width || 200,
+        ...(props.align === 'right' && { right: 0 })
       }}>
         {props.children}
       </div>
@@ -25,16 +28,13 @@ const Nav: React.FC<NavProps> = props => {
   )
 }
 
-const SiderLayout: React.FC = (props: any) => {
+const ColumnBody: React.FC = (props: any) => {
   return (
-    <>
+    <div className={styles.body_column}>
       <div className={styles.sider}>
         <Menu
           mode='inline'
           defaultSelectedKeys={[ props.location.pathname ]}
-          style={{
-            borderRight: 'none'
-          }}
         >
           <Menu.Item key='/'><Link to='/'>HOME</Link></Menu.Item>
           <Menu.SubMenu
@@ -55,7 +55,15 @@ const SiderLayout: React.FC = (props: any) => {
       <div className={styles.content}>
         {props.children}
       </div>
-    </>
+    </div>
+  )
+}
+
+const PageBody: React.FC = (props: any) => {
+  return (
+    <div className={styles.body_page}>
+      {props.children}
+    </div>
   )
 }
 
@@ -67,21 +75,22 @@ const BasicLayout: React.FC = (props: any) => {
           <h1 className={styles.title}>
             <Link to='/'>Console</Link>
           </h1>
-          <Nav title='Service'>[Submenus]</Nav>
+          <Nav title='Service' arrow={true}>[Submenus]</Nav>
           <Nav title={<Link to='/state'>State</Link>}></Nav>
           <Nav title={<a href='https://umijs.org/guide/getting-started.html' target='_blank'>Doc</a>}></Nav>
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>
-            <span>lang</span>
-            <span>username</span>
+            <Nav title={<Avatar icon={<UserOutlined />} />} align='right' width={150}>
+              <span>profile menu</span>
+            </Nav>
           </div>
         </div>
       </div>
       <div className={styles.body}>
         {(props.route.routes.find((r: any) => r.path === props.location.pathname) || {}).layout === 'page' ?
-          <div style={{ flex: 1 }}>{props.children}</div> :
-          <SiderLayout {...props} />
+          <PageBody {...props} /> :
+          <ColumnBody {...props} />
         }
       </div>
     </div>

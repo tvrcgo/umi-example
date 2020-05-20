@@ -25,7 +25,40 @@ const Nav: React.FC<NavProps> = props => {
   )
 }
 
-const BasicLayout: React.FC = props => {
+const SiderLayout: React.FC = (props: any) => {
+  return (
+    <>
+      <div className={styles.sider}>
+        <Menu
+          mode='inline'
+          style={{
+            borderRight: 'none'
+          }}
+        >
+          <Menu.Item key='home'><Link to='/'>HOME</Link></Menu.Item>
+          <Menu.SubMenu
+            title={<span>Content</span>}
+          >
+            <Menu.ItemGroup key='g1' title='Operation'>
+              <Menu.Item key='g1-1'>Library</Menu.Item>
+              <Menu.Item key='g1-2'>Sticky</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup key='g2' title='Taxonomy'>
+              <Menu.Item key='g2-1'>Tag</Menu.Item>
+              <Menu.Item key='g2-2'>Category</Menu.Item>
+            </Menu.ItemGroup>
+          </Menu.SubMenu>
+          <Menu.Item><Link to='/about'>About</Link></Menu.Item>
+        </Menu>
+      </div>
+      <div className={styles.content}>
+        {props.children}
+      </div>
+    </>
+  )
+}
+
+const BasicLayout: React.FC = (props: any) => {
   return (
     <div className={styles.layout}>
       <div className={styles.header}>
@@ -34,7 +67,7 @@ const BasicLayout: React.FC = props => {
             <Link to='/'>Console</Link>
           </h1>
           <Nav title='Service'>[Submenus]</Nav>
-          <Nav title={<Link to='/about'>Price</Link>}></Nav>
+          <Nav title={<Link to='/state'>State</Link>}></Nav>
           <Nav title={<a href='https://umijs.org/guide/getting-started.html' target='_blank'>Doc</a>}></Nav>
         </div>
         <div className={styles.rt}>
@@ -45,32 +78,10 @@ const BasicLayout: React.FC = props => {
         </div>
       </div>
       <div className={styles.body}>
-        <div className={styles.sider}>
-          <Menu
-            mode='inline'
-            style={{
-              borderRight: 'none'
-            }}
-          >
-            <Menu.Item key='home'><Link to='/'>HOME</Link></Menu.Item>
-            <Menu.SubMenu
-              title={<span>Content</span>}
-            >
-              <Menu.ItemGroup key='g1' title='Operation'>
-                <Menu.Item key='g1-1'>Library</Menu.Item>
-                <Menu.Item key='g1-2'>Sticky</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup key='g2' title='Taxonomy'>
-                <Menu.Item key='g2-1'>Tag</Menu.Item>
-                <Menu.Item key='g2-2'>Category</Menu.Item>
-              </Menu.ItemGroup>
-            </Menu.SubMenu>
-            <Menu.Item><Link to='/about'>About</Link></Menu.Item>
-          </Menu>
-        </div>
-        <div className={styles.content}>
-          {props.children}
-        </div>
+        {props.route.routes.find((r: any) => r.path === props.location.pathname).layout === 'page' ?
+          <div style={{ flex: 1 }}>{props.children}</div> :
+          <SiderLayout {...props} />
+        }
       </div>
     </div>
   )

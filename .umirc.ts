@@ -1,9 +1,8 @@
-import { IConfig } from 'umi-types'
-
+import { IConfig } from 'umi-types';
 const config: IConfig = {
   treeShaking: true,
   theme: {
-    'primary-color': '#00a870'
+    'primary-color': '#00a870',
   },
   routes: [
     {
@@ -13,6 +12,11 @@ const config: IConfig = {
         {
           path: '/about',
           component: './about',
+        },
+        {
+          path: '/state',
+          component: './state',
+          layout: 'page',
         },
         {
           path: '/',
@@ -38,6 +42,5 @@ const config: IConfig = {
       },
     ],
   ],
-}
-
-export default config
+};
+export default config;

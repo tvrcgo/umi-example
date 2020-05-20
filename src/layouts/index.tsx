@@ -31,24 +31,25 @@ const SiderLayout: React.FC = (props: any) => {
       <div className={styles.sider}>
         <Menu
           mode='inline'
+          defaultSelectedKeys={[ props.location.pathname ]}
           style={{
             borderRight: 'none'
           }}
         >
-          <Menu.Item key='home'><Link to='/'>HOME</Link></Menu.Item>
+          <Menu.Item key='/'><Link to='/'>HOME</Link></Menu.Item>
           <Menu.SubMenu
             title={<span>Content</span>}
           >
             <Menu.ItemGroup key='g1' title='Operation'>
-              <Menu.Item key='g1-1'>Library</Menu.Item>
-              <Menu.Item key='g1-2'>Sticky</Menu.Item>
+              <Menu.Item key='/content/library'>Library</Menu.Item>
+              <Menu.Item key='/content/sticky'>Sticky</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup key='g2' title='Taxonomy'>
-              <Menu.Item key='g2-1'>Tag</Menu.Item>
-              <Menu.Item key='g2-2'>Category</Menu.Item>
+              <Menu.Item key='/taxonomy/tag'>Tag</Menu.Item>
+              <Menu.Item key='/taxonomy/category'>Category</Menu.Item>
             </Menu.ItemGroup>
           </Menu.SubMenu>
-          <Menu.Item><Link to='/about'>About</Link></Menu.Item>
+          <Menu.Item key='/about'><Link to='/about'>About</Link></Menu.Item>
         </Menu>
       </div>
       <div className={styles.content}>
@@ -78,7 +79,7 @@ const BasicLayout: React.FC = (props: any) => {
         </div>
       </div>
       <div className={styles.body}>
-        {props.route.routes.find((r: any) => r.path === props.location.pathname).layout === 'page' ?
+        {(props.route.routes.find((r: any) => r.path === props.location.pathname) || {}).layout === 'page' ?
           <div style={{ flex: 1 }}>{props.children}</div> :
           <SiderLayout {...props} />
         }

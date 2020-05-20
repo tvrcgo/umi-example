@@ -22,6 +22,11 @@ const config: IConfig = {
           path: '/',
           component: './index',
         },
+        {
+          path: '/404',
+          component: './404',
+          layout: 'page',
+        },
       ],
     },
   ],

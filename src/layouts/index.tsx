@@ -7,7 +7,6 @@ import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 interface NavProps {
   title: React.ReactElement | string
   children?: React.ReactElement | React.ReactText
-  width?: number
   arrow?: boolean,
   align?: string,
 }
@@ -18,8 +17,7 @@ const Nav: React.FC<NavProps> = props => {
     <div className={styles.nav + (visible ? ` ${styles.active}` : '')} onMouseOver={_ => toggle(true)} onMouseOut={_ => toggle(false)}>
       <h2 className={styles['nav-title']}>{props.title} {props.arrow && <CaretDownOutlined style={{ fontSize: '0.6em' }} /> || null}</h2>
       <div className={styles['nav-content']} style={{
-        display: visible && props.children ? 'block' : 'none',
-        width: props.width || 200,
+        display: visible ? 'block' : 'none',
         ...(props.align === 'right' && { right: 0 })
       }}>
         {props.children}
@@ -75,14 +73,16 @@ const BasicLayout: React.FC = (props: any) => {
           <h1 className={styles.title}>
             <Link to='/'>Console</Link>
           </h1>
-          <Nav title='Service' arrow={true}>[Submenus]</Nav>
+          <Nav title='Service' arrow={true}>
+            <div style={{ width: 200 }}>Product 1</div>
+          </Nav>
           <Nav title={<Link to='/state'>State</Link>}></Nav>
           <Nav title={<a href='https://umijs.org/guide/getting-started.html' target='_blank'>Doc</a>}></Nav>
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>
-            <Nav title={<Avatar icon={<UserOutlined />} />} align='right' width={150}>
-              <span>profile menu</span>
+            <Nav title={<Avatar icon={<UserOutlined />} />} align='right' >
+              <div style={{ width: 150 }}>profile menu</div>
             </Nav>
           </div>
         </div>

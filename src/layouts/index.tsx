@@ -33,9 +33,9 @@ const BasicLayout: React.FC = props => {
           <h1 className={styles.title}>
             <Link to='/'>Console</Link>
           </h1>
-          <Nav title={<Link to='/'>Home</Link>}></Nav>
-          <Nav title='Content'>[Submenus]</Nav>
-          <Nav title={<Link to='/about'>About</Link>}></Nav>
+          <Nav title='Service'>[Submenus]</Nav>
+          <Nav title={<Link to='/'>Price</Link>}></Nav>
+          <Nav title={<Link to='/about'>Doc</Link>}></Nav>
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>

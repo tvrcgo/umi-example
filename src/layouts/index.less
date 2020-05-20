@@ -1,7 +1,8 @@
 @header-height: 60px;
 @gap: 20px;
-@sider-width: 250px;
-@primary-color: #464086;
+@sider-width: 220px;
+@primary-color: #00a870;
+@bg-color: #fafafa;
 
 .layout {
   font-family: Georgia, sans-serif;
@@ -80,7 +81,7 @@
 
         .nav-title {
           background-color: darken(@primary-color, 3%);
-    }
+        }
 
         .nav-content {
           background-color: darken(@primary-color, 3%);
@@ -98,7 +99,7 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #f9f9f9;
+          background-color: @bg-color;
           color: #000;
         }
       }
@@ -114,11 +115,11 @@
     .sider {
       width: @sider-width;
       background-color: #fff;
-      border-right: 1px solid #f5f5f5;
     }
 
     .content {
       flex: 1;
+      background-color: @bg-color;
     }
   }
 

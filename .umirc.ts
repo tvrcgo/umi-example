@@ -3,7 +3,7 @@ import { IConfig } from 'umi-types'
 const config: IConfig = {
   treeShaking: true,
   theme: {
-    'primary-color': '#464086'
+    'primary-color': '#00a870'
   },
   routes: [
     {

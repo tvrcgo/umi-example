@@ -88,7 +88,7 @@ const BasicLayout: React.FC = (props: any) => {
         </div>
       </div>
       <div className={styles.body}>
-        {(props.route.routes.find((r: any) => r.path === props.location.pathname) || {}).layout === 'page' ?
+        {(props.route.routes.find((r: any) => r.path === props.location.pathname) || { layout: 'page' }).layout === 'page' ?
           <PageBody {...props} /> :
           <ColumnBody {...props} />
         }

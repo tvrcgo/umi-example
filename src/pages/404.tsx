@@ -14,7 +14,7 @@ export default () => {
         width: '400px'
       }}>
         <h1>Page not found (404)</h1>
-        <div><Link to='/'><Button type='primary'>Go home</Button></Link></div>
+        <div style={{ marginTop: 50 }}><Link to='/'><Button type='primary'>Go home</Button></Link></div>
       </div>
     </div>
   )

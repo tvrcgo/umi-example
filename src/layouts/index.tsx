@@ -34,8 +34,8 @@ const BasicLayout: React.FC = props => {
             <Link to='/'>Console</Link>
           </h1>
           <Nav title='Service'>[Submenus]</Nav>
-          <Nav title={<Link to='/'>Price</Link>}></Nav>
-          <Nav title={<Link to='/about'>Doc</Link>}></Nav>
+          <Nav title={<Link to='/about'>Price</Link>}></Nav>
+          <Nav title={<a href='https://umijs.org/guide/getting-started.html' target='_blank'>Doc</a>}></Nav>
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>

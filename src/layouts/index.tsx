@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './index.less'
 import Link from 'umi/link'
 import { Menu } from 'antd'
+
+interface NavProps {
+  title: React.ReactElement | string
+  children?: React.ReactElement | React.ReactText
+}
+
+const Nav: React.FC<NavProps> = props => {
+  const [visible, toggle] = useState(false)
+  return (
+    <div className={styles.nav} onMouseOver={_ => toggle(true)} onMouseOut={_ => toggle(false)}>
+      <h2 className={styles['nav-title']}>{props.title}</h2>
+      <div className={styles['nav-content']} style={{ display: visible && props.children ? 'block' : 'none' }}>
+        {props.children}
+      </div>
+    </div>
+  )
+}
 
 const BasicLayout: React.FC = props => {
   return (
@@ -11,6 +28,9 @@ const BasicLayout: React.FC = props => {
           <h1 className={styles.title}>
             <Link to='/'>Console</Link>
           </h1>
+          <Nav title='Nav1'>nav1 content</Nav>
+          <Nav title='Nav2'>nav2 content</Nav>
+          <Nav title={<span>Nav3</span>}></Nav>
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>

@@ -53,15 +53,16 @@
       user-select: none;
 
       &-title {
-        width: 100px;
         color: #fff;
         margin: 0;
         height: @header-height;
+        width: 100px;
         text-align: center;
         cursor: pointer;
 
-        &:hover {
-          background-color: green;
+        a {
+          text-decoration: none;
+          color: #fff;
         }
       }
 
@@ -69,9 +70,21 @@
         width: 200px;
         box-sizing: border-box;
         background-color: @primary-color;
-        opacity: 0.8;
+        opacity: 0.95;
         position: absolute;
+        z-index: 100;
         display: none;
+      }
+
+      &.active {
+
+        .nav-title {
+          background-color: darken(@primary-color, 3%);
+    }
+
+        .nav-content {
+          background-color: darken(@primary-color, 3%);
+        }
       }
     }
 

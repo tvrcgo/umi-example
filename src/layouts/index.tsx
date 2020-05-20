@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './index.less'
 import Link from 'umi/link'
 import { Menu } from 'antd'
+import { CaretDownOutlined } from '@ant-design/icons'
 
 interface NavProps {
   title: React.ReactElement | string
@@ -11,9 +12,11 @@ interface NavProps {
 const Nav: React.FC<NavProps> = props => {
   const [visible, toggle] = useState(false)
   return (
-    <div className={styles.nav} onMouseOver={_ => toggle(true)} onMouseOut={_ => toggle(false)}>
-      <h2 className={styles['nav-title']}>{props.title}</h2>
-      <div className={styles['nav-content']} style={{ display: visible && props.children ? 'block' : 'none' }}>
+    <div className={styles.nav + (visible ? ` ${styles.active}` : '')} onMouseOver={_ => toggle(true)} onMouseOut={_ => toggle(false)}>
+      <h2 className={styles['nav-title']}>{props.title} {props.children && <CaretDownOutlined style={{ fontSize: '0.6em' }} /> || null}</h2>
+      <div className={styles['nav-content']} style={{
+        display: visible && props.children ? 'block' : 'none'
+      }}>
         {props.children}
       </div>
     </div>
@@ -28,9 +31,10 @@ const BasicLayout: React.FC = props => {
           <h1 className={styles.title}>
             <Link to='/'>Console</Link>
           </h1>
+          <Nav title={<Link to='/'>Home</Link>}></Nav>
           <Nav title='Nav1'>nav1 content</Nav>
           <Nav title='Nav2'>nav2 content</Nav>
-          <Nav title={<span>Nav3</span>}></Nav>
+          <Nav title={<Link to='/about'>About</Link>}></Nav>
         </div>
         <div className={styles.rt}>
           <div className={styles.profile}>

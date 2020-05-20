@@ -53,27 +53,15 @@ const BasicLayout: React.FC = props => {
           >
             <Menu.Item key='home'><Link to='/'>HOME</Link></Menu.Item>
             <Menu.SubMenu
-              title={<span>内容</span>}
+              title={<span>Content</span>}
             >
-              <Menu.ItemGroup key='g1' title='运营'>
-                <Menu.Item key='g1-1'>MENU 1</Menu.Item>
-                <Menu.Item key='g1-2'>MENU 2</Menu.Item>
+              <Menu.ItemGroup key='g1' title='Operation'>
+                <Menu.Item key='g1-1'>Library</Menu.Item>
+                <Menu.Item key='g1-2'>Sticky</Menu.Item>
               </Menu.ItemGroup>
-              <Menu.ItemGroup key='g2' title='标注'>
-                <Menu.Item key='g2-1'>MENU 1</Menu.Item>
-                <Menu.Item key='g2-2'>MENU 2</Menu.Item>
-              </Menu.ItemGroup>
-            </Menu.SubMenu>
-            <Menu.SubMenu
-              title={<span>商品</span>}
-            >
-              <Menu.ItemGroup key='g3' title='选品'>
-                <Menu.Item key='g3-1'>MENU 1</Menu.Item>
-                <Menu.Item key='g3-2'>MENU 2</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup key='g4' title='营销'>
-                <Menu.Item key='g4-1'>MENU 1</Menu.Item>
-                <Menu.Item key='g4-2'>MENU 2</Menu.Item>
+              <Menu.ItemGroup key='g2' title='Taxonomy'>
+                <Menu.Item key='g2-1'>Tag</Menu.Item>
+                <Menu.Item key='g2-2'>Category</Menu.Item>
               </Menu.ItemGroup>
             </Menu.SubMenu>
             <Menu.Item><Link to='/about'>About</Link></Menu.Item>

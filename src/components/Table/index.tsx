@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Table, Button, Spin } from 'antd'
-import './index.less'
+import styles from './index.less'
 import { TableProps } from 'antd/es/table'
 
 interface DataTableProps {
@@ -141,10 +141,10 @@ export default class DataTable extends React.Component<TableProps<any> & DataTab
     }) : props.columns
 
     return (
-      <div className='component-table'>
-        <div className='table-header'>
-          <h2 className='title'>{title?.call(this, [])}</h2>
-          <div className='batch-action'>
+      <div className={styles['component-table']}>
+        <div className={styles['table-header']}>
+          <h2 className={styles['title']}>{title?.call(this, [])}</h2>
+          <div className={styles['batch-action']}>
             {batchAction.map((act, i) => (
               <Button
                 key={i}

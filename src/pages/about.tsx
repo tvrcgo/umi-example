@@ -55,12 +55,12 @@ export default function() {
           }
         ]}
         rowAction={[
-          <Action onClick={() => {}}>删除</Action>,
-          <Action onClick={() => {}}>更新</Action>
+          <Action onClick={(row: any) => {}}>删除</Action>,
+          <Action onClick={(row: any) => {}}>更新</Action>
         ]}
         batchAction={[
-          <Action onClick={() => {}}>添加</Action>,
-          <Action onClick={() => {}}>删除</Action>
+          <Action onClick={(rows: any[]) => {}}>添加</Action>,
+          <Action onClick={(rows: any[]) => {}}>删除</Action>
         ]}
         multiSelect={true}
         onChange={(rows: any) => console.log(rows)}

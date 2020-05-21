@@ -45,6 +45,19 @@ export default function() {
         title={() => '任务'}
         loading={false}
         columns={columns}
+        dataSource={[
+          {
+            title: '标题',
+            status: 1,
+            progress: '30%',
+            updated_at: new Date().toISOString(),
+            created_at: new Date().toISOString()
+          }
+        ]}
+        rowAction={[
+          <Action onClick={() => {}}>删除</Action>,
+          <Action onClick={() => {}}>更新</Action>
+        ]}
         batchAction={[
           <Action onClick={() => {}}>添加</Action>,
           <Action onClick={() => {}}>删除</Action>

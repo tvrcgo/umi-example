@@ -4,14 +4,15 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "sourceMap": true,
     "baseUrl": ".",
     "strict": true,
     "paths": {
       "@/*": ["src/*"],
-      "@tmp/*": ["src/pages/.umi/*"]
+      "@tmp/*": ["src/pages/.umi/*"],
+      "@@/*": ["src/.umi/*"]
     },
     "allowSyntheticDefaultImports": true
   }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './index.less'
-import Link from 'umi/link'
+import { Link } from 'umi'
 import { Menu, Avatar } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 

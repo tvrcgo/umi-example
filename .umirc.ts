@@ -1,6 +1,4 @@
-import { IConfig } from 'umi-types';
-const config: IConfig = {
-  treeShaking: true,
+export default {
   theme: {
     'primary-color': '#00a870',
   },
@@ -29,22 +27,6 @@ const config: IConfig = {
       ],
     },
   ],
-  plugins: [
-    [
-      'umi-plugin-react',
-      {
-        antd: true,
-        dva: false,
-        dynamicImport: {
-          webpackChunkName: true,
-        },
-        title: 'umi-example',
-        dll: true,
-        routes: {
-          exclude: [/components\//],
-        },
-      },
-    ],
-  ],
-};
-export default config;
+  title: 'umi-example',
+  antd: {}
+}
